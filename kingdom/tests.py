@@ -1,6 +1,9 @@
+from django.urls import resolve
 from django.test import TestCase
+from kingdom.views import home_page
 
 class SmokeTest(TestCase):
 
-    def test_bad_math(self):
-        self.assertEqual(3 + 3, 7)
+    def test_home_page_resolving(self):
+        found = resolve('/')
+        self.assertEqual(found.func, home_page)
